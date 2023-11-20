@@ -35,4 +35,26 @@ describe("Input", () => {
     expect(input.className).toEqual(inputStyle);
     expect(span.className).toEqual(helperStyle);
   });
+
+  it("should render an input field with end adornment", () => {
+    const { getByPlaceholderText, getByText, container } = render(
+      <Input
+        placeholder="password"
+        type="password"
+        helperText="Your Password"
+        endAdornment={<i>Eye</i>}
+      />
+    );
+
+    const span = container.querySelector("span");
+    const [wrapper, endAdornment] = container.querySelectorAll("div");
+    const input = container.querySelector("input");
+
+    expect(getByText("Eye")).toBeDefined();
+    expect(getByPlaceholderText("password")).toBeDefined();
+    expect(wrapper.className).toEqual(wrapperStyle);
+    expect(endAdornment.className).toEqual("absolute end-adornment");
+    expect(input.className).toEqual(`${inputStyle} input-end-adornment`);
+    expect(span.className).toEqual(helperStyle);
+  });
 });
