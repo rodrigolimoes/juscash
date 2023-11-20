@@ -177,3 +177,21 @@
 .fixed {
     position: fixed;
 }
+
+/* Float */
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-bottom{
+    float: bottom;
+}
+
+.float-top{
+    float: top;
+}
