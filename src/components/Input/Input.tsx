@@ -27,6 +27,7 @@ type InputProps = InputStateProps &
  * @param endAdornment End adornment for this component
  * @param error If true, the input will indicate an error
  * @param helperText Text to indicate some help to the user
+ * @param className Override or extend the styles applied to the component
  * @param props Input props
  * @constructor
  * @example
@@ -36,9 +37,10 @@ const Input: FC<InputProps> = ({
   endAdornment,
   error,
   helperText,
+  className,
   ...props
 }) => {
-  const inputStyle = classNames("input", {
+  const inputStyle = classNames("input", className, {
     "input-end-adornment": !!endAdornment,
     "input-error": !!error,
   });
@@ -47,7 +49,7 @@ const Input: FC<InputProps> = ({
   });
 
   return (
-    <div>
+    <>
       <div className="relative flex items-center justify-end">
         <input className={inputStyle} {...props} />
         {endAdornment && (
@@ -55,7 +57,7 @@ const Input: FC<InputProps> = ({
         )}
       </div>
       {helperText && <span className={helperTextStyle}>{helperText}</span>}
-    </div>
+    </>
   );
 };
 
