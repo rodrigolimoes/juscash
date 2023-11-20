@@ -1,5 +1,6 @@
 :root {
     --color-primary: #062247;
+    --color-error: #EF4444FF;
 }
 
 * {
