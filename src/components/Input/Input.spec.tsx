@@ -57,4 +57,29 @@ describe("Input", () => {
     expect(input.className).toEqual(`${inputStyle} input-end-adornment`);
     expect(span.className).toEqual(helperStyle);
   });
+
+  it("should render an error input field if the error property is true", () => {
+    const { getByPlaceholderText, getByText, container } = render(
+      <Input
+        placeholder="password"
+        error
+        type="password"
+        helperText="Your Password"
+        endAdornment={<i>Eye</i>}
+      />
+    );
+
+    const span = container.querySelector("span");
+    const [wrapper, endAdornment] = container.querySelectorAll("div");
+    const input = container.querySelector("input");
+
+    expect(getByText("Eye")).toBeDefined();
+    expect(getByPlaceholderText("password")).toBeDefined();
+    expect(wrapper.className).toEqual(wrapperStyle);
+    expect(endAdornment.className).toEqual("absolute end-adornment");
+    expect(input.className).toEqual(
+      `${inputStyle} input-end-adornment input-error`
+    );
+    expect(span.className).toEqual(`${helperStyle} helper-text-error`);
+  });
 });
