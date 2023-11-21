@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, ReactNode } from "react";
+import React, { ComponentProps, FC, forwardRef, ReactNode } from "react";
 import "./style.css";
 import classNames from "classnames";
 
@@ -33,32 +33,28 @@ type InputProps = InputStateProps &
  * @example
  * <Input type="password" placeholder="Password" endAdornment={<Eye />}/>
  */
-const Input: FC<InputProps> = ({
-  endAdornment,
-  error,
-  helperText,
-  className,
-  ...props
-}) => {
-  const inputStyle = classNames("input", className, {
-    "input-end-adornment": !!endAdornment,
-    "input-error": !!error,
-  });
-  const helperTextStyle = classNames("helper-text", {
-    "helper-text-error": !!error,
-  });
+const Input: FC<InputProps> = forwardRef(
+  ({ endAdornment, error, helperText, className, ...props }, ref) => {
+    const inputStyle = classNames("input", className, {
+      "input-end-adornment": !!endAdornment,
+      "input-error": !!error,
+    });
+    const helperTextStyle = classNames("helper-text", {
+      "helper-text-error": !!error,
+    });
 
-  return (
-    <>
-      <div className="relative flex items-center justify-end">
-        <input className={inputStyle} {...props} />
-        {endAdornment && (
-          <div className="absolute end-adornment">{endAdornment}</div>
-        )}
-      </div>
-      {helperText && <span className={helperTextStyle}>{helperText}</span>}
-    </>
-  );
-};
+    return (
+      <>
+        <div className="relative flex items-center justify-end">
+          <input className={inputStyle} {...props} ref={ref} />
+          {endAdornment && (
+            <div className="absolute end-adornment">{endAdornment}</div>
+          )}
+        </div>
+        {helperText && <span className={helperTextStyle}>{helperText}</span>}
+      </>
+    );
+  }
+);
 
 export default Input;
