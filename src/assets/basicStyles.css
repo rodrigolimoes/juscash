@@ -1,6 +1,16 @@
 :root {
     --color-primary: #072854;
     --color-error: #EF4444FF;
+    --color-success: #2CBD62FF;
+    --color-secondary: #64748BFF;
+    --color-info: #3B82F6FF;
+
+    --color-success-hover: #4cc77a;
+    --color-secondary-hover: #94A3B8FF;
+    --color-info-hover: #60A5FAFF;
+    --color-success-outlined-hover: #4CC77A19;
+    --color-secondary-outlined-hover: #94A3B81A;
+    --color-info-outlined-hover: #60A5FA1A;
 }
 
 * {
@@ -33,6 +43,18 @@
     width: 100vw;
 }
 
+.w-240{
+    width: 15rem;
+}
+
+.w-320{
+    width: 20rem;
+}
+
+.w-384{
+    width: 24rem;
+}
+
 /* height */
 
 .h-full {
@@ -41,6 +63,13 @@
 
 .h-screen {
     height: 100vh;
+}
+
+
+/*padding*/
+
+.p-16 {
+    padding: 1rem;
 }
 
 /* Flex */
