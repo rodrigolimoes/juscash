@@ -40,4 +40,19 @@ describe("Button", () => {
       expect(button.className).toEqual("button button-contained-info");
     });
   });
+
+  describe("outlined", () => {
+    it("should render a success button", () => {
+      const { getByText, container } = render(
+        <Button variant="outlined" color="success">
+          Create
+        </Button>
+      );
+
+      const button = container.querySelector("button");
+
+      expect(getByText("Create")).toBeDefined();
+      expect(button.className).toEqual("button button-outlined-success");
+    });
+  });
 });
