@@ -67,5 +67,18 @@ describe("Button", () => {
       expect(getByText("Create")).toBeDefined();
       expect(button.className).toEqual("button button-outlined-secondary");
     });
+
+    it("should render an info button", () => {
+      const { getByText, container } = render(
+        <Button variant="outlined" color="info">
+          Create
+        </Button>
+      );
+
+      const button = container.querySelector("button");
+
+      expect(getByText("Create")).toBeDefined();
+      expect(button.className).toEqual("button button-outlined-info");
+    });
   });
 });
