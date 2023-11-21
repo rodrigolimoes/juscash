@@ -22,6 +22,11 @@
     font-weight: normal;
 }
 
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 /* background color*/
 
 .bg-primary {
@@ -31,6 +36,10 @@
 /*Text*/
 .text-primary {
     color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
 }
 
 .text-sm {
