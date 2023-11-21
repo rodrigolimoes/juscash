@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import UserForm from "./form/UserForm";
+import UserForm from "./Form/UserForm";
 
 interface SignUpStateProps {}
 interface SignUpDispatchProps {}
