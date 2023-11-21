@@ -1,10 +1,8 @@
-import React from 'react'
+import React from "react";
+import SignUp from "./pages/SignUp/SignUp";
 
 function App() {
-
-  return (
-      <div>Home</div>
-  )
+  return <SignUp />;
 }
 
-export default App
+export default App;
