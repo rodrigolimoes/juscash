@@ -12,13 +12,13 @@ type HeaderProps = HeaderStateProps &
 
 const Header: FC<HeaderProps> = ({ children, className, ...props }) => {
   const headerStyle = classNames(
-    "flex justify-between items-center title p-16",
+    "flex justify-between items-center p-16",
     className
   );
   const { onClose } = useModalContext();
   return (
     <header className={headerStyle} {...props}>
-      {children}
+      <h6 className="title">{children}</h6>
       <div
         className="button-close"
         onClick={() => {
