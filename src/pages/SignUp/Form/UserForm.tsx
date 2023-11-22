@@ -6,6 +6,7 @@ import { useShowPassword } from "../../../hooks/useShowPassword";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userFormDto } from "./UserFormDto";
+import { useUser } from "../../../hooks/useUser";
 
 const defaultValues = {
   name: "",
@@ -33,11 +34,21 @@ const UserForm: FC<UserFormProps> = () => {
     mode: "all",
     defaultValues,
   });
+  const { createUser } = useUser();
 
-  const onSubmit = handleSubmit(() => {});
+  const onSubmit = ({ email, password, name }: any) => {
+    try {
+      createUser({ email, name, password });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col justify-start gap-16">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col justify-start gap-16"
+    >
       <div className="flex flex-col gap-4">
         <label className="text-primary">Seu Nome completo: *</label>
         <Input

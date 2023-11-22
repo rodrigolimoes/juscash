@@ -27,3 +27,5 @@ export const userFormDto = zod
     message: "As senhas não coincidem",
     path: ["confirmPassword"],
   });
+
+export type UserForm = zod.infer<typeof userFormDto>;
