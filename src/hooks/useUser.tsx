@@ -19,8 +19,6 @@ export const useUser = (id?: string) => {
     if (existUser) throw new Error("The user already exists");
 
     setUsers((prevSate) => [...prevSate, newUser]);
-
-    return newUser;
   };
 
   return {

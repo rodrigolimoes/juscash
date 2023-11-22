@@ -7,6 +7,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormDto } from "./LoginFormDto";
+import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
   email: "",
@@ -31,10 +32,12 @@ const LoginForm: FC<LoginFormProps> = () => {
     mode: "all",
     defaultValues,
   });
+  const navigate = useNavigate();
 
-  const onSubmit = ({ email, password }: any) => {
+  const onSubmit = async ({ email, password }: any) => {
     try {
-      login({ email, password });
+      await login({ email, password });
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
@@ -76,7 +79,7 @@ const LoginForm: FC<LoginFormProps> = () => {
       <div>
         <span className="float-right text-sm">
           Não possui uma conta?{" "}
-          <a href="/" className="text-primary text-sm">
+          <a href="/signup" className="text-primary text-sm">
             Cadastrar
           </a>
         </span>

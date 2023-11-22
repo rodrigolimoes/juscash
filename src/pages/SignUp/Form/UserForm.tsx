@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userFormDto } from "./UserFormDto";
 import { useUser } from "../../../hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
   name: "",
@@ -35,10 +36,12 @@ const UserForm: FC<UserFormProps> = () => {
     defaultValues,
   });
   const { createUser } = useUser();
+  const navigate = useNavigate();
 
-  const onSubmit = ({ email, password, name }: any) => {
+  const onSubmit = async ({ email, password, name }: any) => {
     try {
-      createUser({ email, name, password });
+      await createUser({ email, name, password });
+      navigate("/login");
     } catch (e) {
       console.log(e);
     }
@@ -108,7 +111,7 @@ const UserForm: FC<UserFormProps> = () => {
       <div>
         <span className="float-right text-sm">
           Já possui conta?{" "}
-          <a href="/src/pages" className="text-primary text-sm">
+          <a href="/login" className="text-primary text-sm">
             Fazer o Login
           </a>
         </span>
