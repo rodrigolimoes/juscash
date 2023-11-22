@@ -16,7 +16,7 @@ export const useUser = (id?: string) => {
 
     const existUser = users.find((e) => e.email === email);
 
-    if (existUser) throw new Error("User already exist");
+    if (existUser) throw new Error("The user already exists");
 
     setUsers((prevSate) => [...prevSate, newUser]);
 
