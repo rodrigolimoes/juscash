@@ -78,6 +78,10 @@
     height: 100vh;
 }
 
+.h-152 {
+    height: 9.5rem;
+}
+
 /*margim*/
 
 .m-t-12 {
@@ -88,6 +92,11 @@
 
 .p-16 {
     padding: 1rem;
+}
+
+.p-x-16{
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 /* Flex */
