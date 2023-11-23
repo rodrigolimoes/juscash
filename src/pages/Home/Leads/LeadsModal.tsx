@@ -6,6 +6,8 @@ import { Checkbox } from "../../../components/Checkbox";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { leadsFormDto } from "./LeadsFormDto";
+import { useLead } from "../../../hooks/useLeads";
+import { toast } from "react-toastify";
 
 interface Opportunity {
   label: string;
@@ -55,6 +57,7 @@ const LeadsModal: FC<LeadsModalProps> = ({ data, isOpen, onClose }) => {
     useState<Array<Opportunity>>(defaultOpportunities);
   const {
     register,
+    handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(leadsFormDto),
@@ -62,6 +65,7 @@ const LeadsModal: FC<LeadsModalProps> = ({ data, isOpen, onClose }) => {
     mode: "all",
     defaultValues,
   });
+  const { createLead } = useLead();
 
   const onChangeOpportunities = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
@@ -85,6 +89,24 @@ const LeadsModal: FC<LeadsModalProps> = ({ data, isOpen, onClose }) => {
       setOpportunities(currentOpportunities);
     }
   };
+
+  const onSubmit = handleSubmit(async ({ name, email, phone }: any) => {
+    try {
+      await createLead({
+        name,
+        email,
+        phone,
+        opportunities: opportunities.map((e) => e.label),
+      });
+
+      onClose();
+      toast.success("Lead criado com sucesso");
+    } catch (e) {
+      const { message } = e as Error;
+
+      toast.error(message);
+    }
+  });
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -142,7 +164,13 @@ const LeadsModal: FC<LeadsModalProps> = ({ data, isOpen, onClose }) => {
           <Button variant={"outlined"} color={"secondary"} onClick={onClose}>
             Cancelar
           </Button>
-          <Button variant={"contained"} color={"info"}>
+          <Button
+            variant={"contained"}
+            color={"info"}
+            onClick={async () => {
+              await onSubmit();
+            }}
+          >
             Salvar
           </Button>
         </div>

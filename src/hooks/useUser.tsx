@@ -9,14 +9,14 @@ export interface User {
 }
 
 export const useUser = (id?: string) => {
-  const [users, setUsers] = useLocalStorage<Array<any>>("users", []);
+  const [users, setUsers] = useLocalStorage<Array<User>>("users", []);
 
   const createUser = ({ name, password, email }: User) => {
     const newUser = { id: v4(), name, email, password };
 
     const existUser = users.find((e) => e.email === email);
 
-    if (existUser) throw new Error("The user already exists");
+    if (existUser) throw new Error("O Usuário já existe");
 
     setUsers((prevSate) => [...prevSate, newUser]);
   };
