@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import { Eye, EyeOff } from "lucide-react";
@@ -62,6 +62,7 @@ const UserForm: FC<UserFormProps> = () => {
           type="text"
           error={!!errors.name}
           helperText={errors?.name?.message}
+          placeholder={"Ex: Rodrigo Limões da Silva"}
         />
       </div>
       <div className="flex flex-col gap-4">
@@ -72,6 +73,7 @@ const UserForm: FC<UserFormProps> = () => {
           type="email"
           error={!!errors.email}
           helperText={errors?.email?.message}
+          placeholder={"Ex: rodrigo@gmail.com"}
         />
       </div>
       <div className="flex flex-col gap-4">
@@ -90,6 +92,7 @@ const UserForm: FC<UserFormProps> = () => {
               {showPassword ? <EyeOff /> : <Eye />}
             </div>
           }
+          placeholder={"Ex: ********"}
         />
       </div>
       <div className="flex flex-col gap-4">
@@ -100,6 +103,7 @@ const UserForm: FC<UserFormProps> = () => {
           type={showConfirmPassword ? "text" : "password"}
           error={!!errors.confirmPassword}
           helperText={errors?.confirmPassword?.message}
+          placeholder={"Ex: ********"}
           endAdornment={
             <div
               className="cursor-pointer text-secondary"

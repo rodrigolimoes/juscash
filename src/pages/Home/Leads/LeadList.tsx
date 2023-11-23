@@ -1,7 +1,17 @@
-import React, { FC, useRef, DragEvent } from "react";
+import { FC, useRef, DragEvent } from "react";
 import { Lead, Status } from "../../../hooks/useLeads";
 import { toast } from "react-toastify";
 import { checksNewStatus } from "../../../utils/checksNewStatus";
+
+interface DragOverOption {
+  currentStatus: number;
+  previousStatus: number;
+}
+
+interface DragStartOption {
+  item: string;
+  id: string;
+}
 
 const status = ["Cliente em potencial", "Dados confirmados", "Análise do lead"];
 const positions = [
@@ -25,7 +35,7 @@ const LeadList: FC<LeadListProps> = ({ leads, updateStatus, onViewLead }) => {
 
   const onDragOver = (
     event: DragEvent<HTMLTableCellElement>,
-    { currentStatus, previousStatus }
+    { currentStatus, previousStatus }: DragOverOption
   ) => {
     event.preventDefault();
 
@@ -44,7 +54,10 @@ const LeadList: FC<LeadListProps> = ({ leads, updateStatus, onViewLead }) => {
     event.currentTarget.classList.remove("drag-over-success");
   };
 
-  const onDragStart = (event: DragEvent<HTMLDivElement>, { item, id }) => {
+  const onDragStart = (
+    event: DragEvent<HTMLDivElement>,
+    { item, id }: DragStartOption
+  ) => {
     event.dataTransfer.setData("id", id);
     event.dataTransfer.effectAllowed = "move";
     itemOver.current = item;
@@ -52,7 +65,7 @@ const LeadList: FC<LeadListProps> = ({ leads, updateStatus, onViewLead }) => {
 
   const onDrop = async (
     event: DragEvent<HTMLTableCellElement>,
-    { currentStatus, previousStatus }
+    { currentStatus, previousStatus }: DragOverOption
   ) => {
     event.preventDefault();
 
@@ -82,13 +95,13 @@ const LeadList: FC<LeadListProps> = ({ leads, updateStatus, onViewLead }) => {
           onDragOver={(event) => {
             onDragOver(event, {
               currentStatus: status,
-              previousStatus: lead.status,
+              previousStatus: lead.status || Status.PotentialClient,
             });
           }}
           onDrop={async (event) =>
             await onDrop(event, {
               currentStatus: status,
-              previousStatus: lead.status,
+              previousStatus: lead.status || Status.PotentialClient,
             })
           }
         >
@@ -100,7 +113,7 @@ const LeadList: FC<LeadListProps> = ({ leads, updateStatus, onViewLead }) => {
               if (status !== lead.status) {
                 event.preventDefault();
               } else {
-                onDragStart(event, { item: identifier, id: lead.id });
+                onDragStart(event, { item: identifier, id: lead?.id || "" });
               }
             }}
           >

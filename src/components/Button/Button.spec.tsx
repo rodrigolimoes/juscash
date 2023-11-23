@@ -13,7 +13,7 @@ describe("Button", () => {
       const button = container.querySelector("button");
 
       expect(getByText("Create")).toBeDefined();
-      expect(button.className).toEqual("button button-contained-success");
+      expect(button?.className).toEqual("button button-contained-success");
     });
     it("should render a secondary button", () => {
       const { getByText, container } = render(
@@ -25,7 +25,7 @@ describe("Button", () => {
       const button = container.querySelector("button");
 
       expect(getByText("Create")).toBeDefined();
-      expect(button.className).toEqual("button button-contained-secondary");
+      expect(button?.className).toEqual("button button-contained-secondary");
     });
     it("should render an info button", () => {
       const { getByText, container } = render(
@@ -37,7 +37,7 @@ describe("Button", () => {
       const button = container.querySelector("button");
 
       expect(getByText("Create")).toBeDefined();
-      expect(button.className).toEqual("button button-contained-info");
+      expect(button?.className).toEqual("button button-contained-info");
     });
   });
 
@@ -52,7 +52,7 @@ describe("Button", () => {
       const button = container.querySelector("button");
 
       expect(getByText("Create")).toBeDefined();
-      expect(button.className).toEqual("button button-outlined-success");
+      expect(button?.className).toEqual("button button-outlined-success");
     });
 
     it("should render a secondary button", () => {
@@ -65,7 +65,7 @@ describe("Button", () => {
       const button = container.querySelector("button");
 
       expect(getByText("Create")).toBeDefined();
-      expect(button.className).toEqual("button button-outlined-secondary");
+      expect(button?.className).toEqual("button button-outlined-secondary");
     });
 
     it("should render an info button", () => {
@@ -78,7 +78,7 @@ describe("Button", () => {
       const button = container.querySelector("button");
 
       expect(getByText("Create")).toBeDefined();
-      expect(button.className).toEqual("button button-outlined-info");
+      expect(button?.className).toEqual("button button-outlined-info");
     });
   });
 });

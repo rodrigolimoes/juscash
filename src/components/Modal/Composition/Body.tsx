@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from "react";
+import { ComponentProps, FC } from "react";
 import classNames from "classnames";
 
 interface BodyStateProps {}

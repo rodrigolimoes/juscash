@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useShowPassword } from "../../../hooks/useShowPassword";
 import Input from "../../../components/Input";
 import { Eye, EyeOff } from "lucide-react";
@@ -58,6 +58,7 @@ const LoginForm: FC<LoginFormProps> = () => {
           type="email"
           error={!!errors.email}
           helperText={errors?.email?.message}
+          placeholder={"Ex: rodrigo@gmail.com"}
         />
       </div>
       <div className="flex flex-col gap-4">
@@ -68,6 +69,7 @@ const LoginForm: FC<LoginFormProps> = () => {
           type={showPassword ? "text" : "password"}
           error={!!errors.password}
           helperText={errors?.password?.message}
+          placeholder={"Ex: ********"}
           endAdornment={
             <div
               className="cursor-pointer text-secondary"

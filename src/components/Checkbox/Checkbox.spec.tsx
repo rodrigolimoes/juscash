@@ -8,6 +8,6 @@ describe("Checkbox", () => {
     const label = container.querySelector("label");
 
     expect(getByText("task 1")).toBeDefined();
-    expect(label.className).toEqual("m-l-6");
+    expect(label?.className).toEqual("m-l-6");
   });
 });

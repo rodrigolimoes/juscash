@@ -16,8 +16,8 @@ describe("Input", () => {
     const input = container.querySelector("input");
 
     expect(getByPlaceholderText("name")).toBeDefined();
-    expect(div.className).toEqual(wrapperStyle);
-    expect(input.className).toEqual(inputStyle);
+    expect(div?.className).toEqual(wrapperStyle);
+    expect(input?.className).toEqual(inputStyle);
     expect(span).toEqual(null);
   });
 
@@ -31,9 +31,9 @@ describe("Input", () => {
     const input = container.querySelector("input");
 
     expect(getByPlaceholderText("name")).toBeDefined();
-    expect(div.className).toEqual(wrapperStyle);
-    expect(input.className).toEqual(inputStyle);
-    expect(span.className).toEqual(helperStyle);
+    expect(div?.className).toEqual(wrapperStyle);
+    expect(input?.className).toEqual(inputStyle);
+    expect(span?.className).toEqual(helperStyle);
   });
 
   it("should render an input field with end adornment", () => {
@@ -52,10 +52,10 @@ describe("Input", () => {
 
     expect(getByText("Eye")).toBeDefined();
     expect(getByPlaceholderText("password")).toBeDefined();
-    expect(wrapper.className).toEqual(wrapperStyle);
-    expect(endAdornment.className).toEqual("absolute end-adornment");
-    expect(input.className).toEqual(`${inputStyle} input-end-adornment`);
-    expect(span.className).toEqual(helperStyle);
+    expect(wrapper?.className).toEqual(wrapperStyle);
+    expect(endAdornment?.className).toEqual("absolute end-adornment");
+    expect(input?.className).toEqual(`${inputStyle} input-end-adornment`);
+    expect(span?.className).toEqual(helperStyle);
   });
 
   it("should render an error input field if the error property is true", () => {
@@ -75,11 +75,11 @@ describe("Input", () => {
 
     expect(getByText("Eye")).toBeDefined();
     expect(getByPlaceholderText("password")).toBeDefined();
-    expect(wrapper.className).toEqual(wrapperStyle);
-    expect(endAdornment.className).toEqual("absolute end-adornment");
-    expect(input.className).toEqual(
+    expect(wrapper?.className).toEqual(wrapperStyle);
+    expect(endAdornment?.className).toEqual("absolute end-adornment");
+    expect(input?.className).toEqual(
       `${inputStyle} input-end-adornment input-error`
     );
-    expect(span.className).toEqual(`${helperStyle} helper-text-error`);
+    expect(span?.className).toEqual(`${helperStyle} helper-text-error`);
   });
 });

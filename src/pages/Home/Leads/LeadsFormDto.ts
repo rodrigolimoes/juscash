@@ -6,5 +6,5 @@ export const leadsFormDto = zod.object({
   phone: zod
     .string()
     .min(1, "Campo obrigatório")
-    .regex(new RegExp("([0-9]{2})([0-9]{4,5})([0-9]{4})"), "Telefone inválido"),
+    .regex(new RegExp("\\b[0-9]{10,11}\\b"), "Telefone inválido"),
 });

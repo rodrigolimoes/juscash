@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { Body, Footer, Header, Modal } from "../../../components/Modal";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
@@ -160,6 +160,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
             error={!!errors.name}
             helperText={errors?.name?.message}
             disabled={isDisabled}
+            placeholder={"Ex: Rodrigo Limões da Silva"}
           />
         </div>
         <div className="flex flex-col gap-4">
@@ -171,6 +172,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
             error={!!errors.email}
             helperText={errors?.email?.message}
             disabled={isDisabled}
+            placeholder={"Ex: rodrigo@gmail.com"}
           />
         </div>
         <div className="flex flex-col gap-4">
@@ -182,6 +184,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
             error={!!errors.phone}
             helperText={errors?.phone?.message}
             disabled={isDisabled}
+            placeholder={"Ex: 21987654327"}
           />
         </div>
         <div className="flex justify-start items-start flex-col gap-8">

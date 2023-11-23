@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from "react";
+import { ComponentProps, FC } from "react";
 import { X } from "lucide-react";
 import classNames from "classnames";
 import { useModalContext } from "../ModalContext";

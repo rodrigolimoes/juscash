@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, forwardRef, ReactNode } from "react";
+import { ComponentProps, FC, forwardRef, ReactNode } from "react";
 import "./style.css";
 import classNames from "classnames";
 

@@ -18,7 +18,7 @@ export const useUser = (id?: string) => {
 
     if (existUser) throw new Error("O Usuário já existe");
 
-    setUsers((prevSate) => [...prevSate, newUser]);
+    setUsers((prevSate: Array<User>) => [...prevSate, newUser]);
   };
 
   return {

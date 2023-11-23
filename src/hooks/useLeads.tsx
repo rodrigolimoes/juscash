@@ -21,7 +21,9 @@ export interface Lead {
 
 export const useLead = () => {
   const [leads, setLeads] = useLocalStorage<Array<any>>("leads", []);
-  const user: null | User = JSON.parse(window.localStorage.getItem("user"));
+  const user: null | User = JSON.parse(
+    window.localStorage.getItem("user") || ""
+  );
 
   const createLead = ({ name, phone, email, opportunities }: Lead) => {
     const newLead = {
@@ -40,7 +42,7 @@ export const useLead = () => {
 
     if (existUser) throw new Error("O lead já existe");
 
-    setLeads((prevSate) => [...prevSate, newLead]);
+    setLeads((prevSate: Array<Lead>) => [...prevSate, newLead]);
   };
 
   const updateStatus = (id: string, status: number) => {

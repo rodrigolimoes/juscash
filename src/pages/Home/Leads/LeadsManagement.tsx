@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import Button from "../../../components/Button";
 import { Plus } from "lucide-react";
 import LeadsModal from "./LeadsModal";

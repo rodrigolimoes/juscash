@@ -32,11 +32,11 @@ describe("Modal", () => {
     expect(getByText("Title")).toBeDefined();
     expect(getByText("Body")).toBeDefined();
     expect(getByText("Footer")).toBeDefined();
-    expect(wrapper.className).toEqual("modal-wrapper open");
-    expect(modalContent.className).toEqual("modal-content");
-    expect(buttonClose.className).toEqual("button-close");
-    expect(body.className).toEqual("p-x-16");
-    expect(header.className).toEqual("flex justify-between items-center p-16");
-    expect(footer.className).toEqual("p-16");
+    expect(wrapper?.className).toEqual("modal-wrapper open");
+    expect(modalContent?.className).toEqual("modal-content");
+    expect(buttonClose?.className).toEqual("button-close");
+    expect(body?.className).toEqual("p-x-16");
+    expect(header?.className).toEqual("flex justify-between items-center p-16");
+    expect(footer?.className).toEqual("p-16");
   });
 });
