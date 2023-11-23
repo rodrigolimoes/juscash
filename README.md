@@ -27,11 +27,11 @@ O aplicativo está disponível online. Você pode acessá-lo [aqui](https://rodr
   npm run test
   
   # Execute em modo de desenvolvimento
-  # Acessar: http://localhost:5173/
+  # Acessar: http://localhost:5173/juscash
   npm run dev
   
   # Execute a compilação do aplicativo
-  # Acessar: http://localhost:4173/
+  # Acessar: http://localhost:4173/juscash
   npm run test
   npm run build
   npm run preview
