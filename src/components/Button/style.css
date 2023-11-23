@@ -1,0 +1,89 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 1rem 0 1rem;
+    height: 2.25rem;
+
+    border: 0;
+    border-radius: 0.313rem;
+}
+
+.button-icon {
+    padding: 0 1rem 0 0.75rem;
+    gap: 0.5rem;
+}
+
+.button-icon > svg {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+.button-outlined,.button-outlined-info, .button-outlined-success, .button-outlined-secondary {
+    background-color: transparent;
+    border: 1px solid;
+}
+
+/* Success */
+
+
+.button-contained-success {
+    background-color: var(--color-success);
+    color: white;
+}
+
+.button-contained-success:hover{
+    background-color: var(--color-success-hover);
+}
+
+.button-outlined-success {
+    color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.button-outlined-success:hover {
+    background-color: var(--color-success-outlined-hover)
+}
+
+/* Secondary */
+
+.button-contained-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.button-contained-secondary:hover {
+    background-color: var(--color-secondary-hover);
+}
+
+
+.button-outlined-secondary {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.button-outlined-secondary:hover {
+    background-color: var(--color-secondary-outlined-hover);
+}
+
+/* Info */
+
+.button-contained-info {
+    background-color: var(--color-info);
+    color: white;
+}
+
+.button-contained-info:hover {
+    background-color: var(--color-info-hover);
+}
+
+
+.button-outlined-info {
+    border-color: var(--color-info);
+    color: var(--color-info);
+}
+
+.button-outlined-info:hover {
+    background-color: var(--color-info-outlined-hover);
+}
