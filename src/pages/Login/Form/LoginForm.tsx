@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormDto } from "./LoginFormDto";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const defaultValues = {
   email: "",
@@ -39,7 +40,8 @@ const LoginForm: FC<LoginFormProps> = () => {
       await login({ email, password });
       navigate("/");
     } catch (e) {
-      console.log(e);
+      const { message } = e as Error;
+      toast.error(message);
     }
   };
 

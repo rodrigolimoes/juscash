@@ -6,7 +6,7 @@ type Data = Omit<User, "id" | "name">;
 export const useAuth = () => {
   const [users] = useLocalStorage<Array<User>>("users", []);
   const [loggedIn, setLoggedIn] = useLocalStorage<boolean>("loggedin", false);
-  const [user, setUser] = useLocalStorage<User | undefined>("user", undefined);
+  const [user, setUser] = useLocalStorage<User | null>("user", null);
   const login = (data: Data) => {
     const user = users.find((user) => user.email === data.email);
 
@@ -15,7 +15,9 @@ export const useAuth = () => {
       setUser(user);
     } else {
       setLoggedIn(false);
-      setUser(undefined);
+      setUser(null);
+
+      throw new Error("E-mail ou senha incorretos");
     }
   };
 

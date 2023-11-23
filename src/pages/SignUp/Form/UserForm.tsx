@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { userFormDto } from "./UserFormDto";
 import { useUser } from "../../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const defaultValues = {
   name: "",
@@ -43,7 +44,8 @@ const UserForm: FC<UserFormProps> = () => {
       await createUser({ email, name, password });
       navigate("/login");
     } catch (e) {
-      console.log(e);
+      const { message } = e as Error;
+      toast.error(message);
     }
   };
 
