@@ -12,7 +12,7 @@ O aplicativo está disponível online. Você pode acessá-lo [aqui](https://rodr
 
 ```bash
 # Clone o repositorio
-  git clone <https://github.com/rodrigolimoes/teste-Juscash.git>
+  git clone <https://github.com/rodrigolimoes/juscash.git>
 
 # Acesse a pasta do projeto no terminal/cmd
   cd teste-Juscash
