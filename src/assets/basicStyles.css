@@ -11,6 +11,7 @@
     --color-success-outlined-hover: #4CC77A19;
     --color-secondary-outlined-hover: #94A3B81A;
     --color-info-outlined-hover: #60A5FA1A;
+    --color-error-outlined-hover: #F8717119;
 }
 
 * {
@@ -44,6 +45,10 @@
 
 .text-sm {
     font-size: 0.875rem;
+}
+
+.text-center {
+    text-align: center;
 }
 
 /* width */
@@ -253,4 +258,34 @@
 
 .float-top{
     float: top;
+}
+
+/*drag*/
+.drag-over {
+    border: 1px dashed var(--color-secondary);
+}
+
+.drag-over-success {
+    border: 1px dashed var(--color-success);
+    background-color: var(--color-success-outlined-hover);
+}
+
+.drag-over-error {
+    border: 1px dashed var(--color-error);
+    background-color: var(--color-error-outlined-hover);
+}
+.drag-over-error:hover {
+    cursor: not-allowed;
+}
+
+table {
+    border-collapse: collapse;
+}
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

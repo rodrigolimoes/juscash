@@ -1,5 +1,6 @@
 import { useLocalStorage } from "./useLocalStorage";
 import { v4 } from "uuid";
+import { checksNewStatus } from "../utils/checksNewStatus";
 
 export enum Status {
   PotentialClient = 10,
@@ -36,8 +37,26 @@ export const useLead = () => {
     setLeads((prevSate) => [...prevSate, newLead]);
   };
 
+  const updateStatus = (id: string, status: number) => {
+    const currentLeads = [...leads];
+    const index = currentLeads.findIndex((lead) => lead.id === id);
+    const lead = currentLeads[index];
+
+    if (checksNewStatus(status, lead.status)) {
+      currentLeads[index] = {
+        ...lead,
+        status,
+      };
+
+      setLeads(currentLeads);
+    } else {
+      throw new Error("Não foi possivel alterar o status");
+    }
+  };
+
   return {
     leads,
     createLead,
+    updateStatus,
   };
 };
