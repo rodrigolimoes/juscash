@@ -15,11 +15,12 @@ interface LeadListStateProps {
 }
 interface LeadListDispatchProps {
   updateStatus: (id: string, status: number) => void;
+  onViewLead: (lead: Lead) => void;
 }
 
 type LeadListProps = LeadListStateProps & LeadListDispatchProps;
 
-const LeadList: FC<LeadListProps> = ({ leads, updateStatus }) => {
+const LeadList: FC<LeadListProps> = ({ leads, updateStatus, onViewLead }) => {
   const itemOver = useRef<string | null>(null);
 
   const onDragOver = (
@@ -99,7 +100,13 @@ const LeadList: FC<LeadListProps> = ({ leads, updateStatus }) => {
               onDragStart(event, { item: identifier, id: lead.id });
             }}
           >
-            {status === lead.status ? lead.name : ""}
+            <span
+              onClick={() => {
+                onViewLead(lead);
+              }}
+            >
+              {status === lead.status ? lead.name : ""}
+            </span>
           </div>
         </td>
       );

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import { Body, Footer, Header, Modal } from "../../../components/Modal";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
@@ -44,7 +44,7 @@ const defaultValues = {
 
 interface LeadsModalStateProps {
   isOpen: boolean;
-  data?: any;
+  data?: Lead | undefined;
 }
 interface LeadsModalDispatchProps {
   onClose: () => void;
@@ -64,6 +64,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(leadsFormDto),
@@ -71,6 +72,20 @@ const LeadsModal: FC<LeadsModalProps> = ({
     mode: "all",
     defaultValues,
   });
+
+  useEffect(() => {
+    setValue("name", data ? data.name : "");
+    setValue("email", data ? data.email : "");
+    setValue("phone", data ? data.phone : "");
+    setOpportunities(
+      data
+        ? defaultOpportunities.map((opportunity) => ({
+            ...opportunity,
+            isChecked: data?.opportunities.includes(opportunity.label),
+          }))
+        : defaultOpportunities
+    );
+  }, [data]);
 
   const onChangeOpportunities = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
@@ -85,6 +100,13 @@ const LeadsModal: FC<LeadsModalProps> = ({
     } else {
       const currentOpportunities = [...opportunities];
       const index = currentOpportunities.findIndex((e) => e.label === name);
+
+      if (opportunities[0].isChecked) {
+        currentOpportunities[0] = {
+          ...currentOpportunities[0],
+          isChecked: false,
+        };
+      }
 
       currentOpportunities[index] = {
         ...currentOpportunities[index],
@@ -101,7 +123,9 @@ const LeadsModal: FC<LeadsModalProps> = ({
         name,
         email,
         phone,
-        opportunities: opportunities.map((e) => e.label),
+        opportunities: opportunities
+          .filter((opportunity) => opportunity.isChecked)
+          .map((e) => e.label),
       });
 
       onClose();
@@ -113,6 +137,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
     }
   });
 
+  const isDisabled = !!data;
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <Header>{data ? "Lead" : "Novo Lead"}</Header>
@@ -126,6 +151,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
             type="text"
             error={!!errors.name}
             helperText={errors?.name?.message}
+            disabled={isDisabled}
           />
         </div>
         <div className="flex flex-col gap-4">
@@ -136,6 +162,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
             type="email"
             error={!!errors.email}
             helperText={errors?.email?.message}
+            disabled={isDisabled}
           />
         </div>
         <div className="flex flex-col gap-4">
@@ -146,6 +173,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
             type="text"
             error={!!errors.phone}
             helperText={errors?.phone?.message}
+            disabled={isDisabled}
           />
         </div>
         <div className="flex justify-start items-start flex-col gap-8">
@@ -157,6 +185,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
                 key={`${e.label}-${index}`}
                 checked={e.isChecked}
                 onChange={onChangeOpportunities}
+                disabled={isDisabled}
               >
                 {e.label}
               </Checkbox>

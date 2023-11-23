@@ -284,6 +284,17 @@ table {
 th {
     border: 1px solid #dddddd;
     text-align: left;
+    font-weight: 700;
+}
+td > div  {
+    cursor: grab;
+}
+td > div > span {
+    cursor: pointer;
+    text-decoration: underline;
+}
+td > div > span:hover {
+    color: var(--color-primary);
 }
 
 tr:nth-child(even) {
