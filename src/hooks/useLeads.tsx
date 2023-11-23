@@ -1,6 +1,7 @@
 import { useLocalStorage } from "./useLocalStorage";
 import { v4 } from "uuid";
 import { checksNewStatus } from "../utils/checksNewStatus";
+import { User } from "./useUser";
 
 export enum Status {
   PotentialClient = 10,
@@ -14,11 +15,13 @@ export interface Lead {
   email: string;
   phone: string;
   status?: number;
+  userId?: string;
   opportunities: Array<string>;
 }
 
 export const useLead = () => {
   const [leads, setLeads] = useLocalStorage<Array<any>>("leads", []);
+  const user: null | User = JSON.parse(window.localStorage.getItem("user"));
 
   const createLead = ({ name, phone, email, opportunities }: Lead) => {
     const newLead = {
@@ -27,10 +30,13 @@ export const useLead = () => {
       email,
       opportunities,
       phone,
+      userId: user ? user.id : undefined,
       status: Status.PotentialClient,
     };
 
-    const existUser = leads.find((e) => e.email === email);
+    const existUser = leads.find(
+      (e) => e.email === email && e.userId === user?.id
+    );
 
     if (existUser) throw new Error("O lead já existe");
 
@@ -55,7 +61,7 @@ export const useLead = () => {
   };
 
   return {
-    leads,
+    leads: leads.filter((lead) => lead.userId === user?.id),
     createLead,
     updateStatus,
   };

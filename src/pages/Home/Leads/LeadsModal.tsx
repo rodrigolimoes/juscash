@@ -117,6 +117,13 @@ const LeadsModal: FC<LeadsModalProps> = ({
     }
   };
 
+  const clearFields = () => {
+    setValue("name", "");
+    setValue("email", "");
+    setValue("phone", "");
+    setOpportunities(defaultOpportunities);
+  };
+
   const onSubmit = handleSubmit(async ({ name, email, phone }: any) => {
     try {
       await createLead({
@@ -129,6 +136,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
       });
 
       onClose();
+      clearFields();
       toast.success("Lead criado com sucesso");
     } catch (e) {
       const { message } = e as Error;
@@ -201,6 +209,7 @@ const LeadsModal: FC<LeadsModalProps> = ({
           <Button
             variant={"contained"}
             color={"info"}
+            disabled={isDisabled}
             onClick={async () => {
               await onSubmit();
             }}
