@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# Teste FullStack - JusCash
+<hr/>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O aplicativo está disponível online. Você pode acessá-lo [aqui](https://rodrigolimoes.github.io/juscash/).
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
+ - ReactJs
+ - TypeScript
+ - Css
+ - Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Instruções de instalação e configuração
 
-## Expanding the ESLint configuration
+```bash
+# Clone o repositorio
+  git clone <https://github.com/rodrigolimoes/teste-Juscash.git>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+# Acesse a pasta do projeto no terminal/cmd
+  cd teste-Juscash
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+# Instale as dependências
+  npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+```bash
+  # Script para executar testes unitários
+  npm run test
+  
+  # Execute em modo de desenvolvimento
+  # Acessar: http://localhost:5173/
+  npm run dev
+  
+  # Execute a compilação do aplicativo
+  # Acessar: http://localhost:4173/
+  npm run test
+  npm run build
+  npm run preview
+```
