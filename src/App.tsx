@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import RequireAuth from "./components/RequireAuth";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <Suspense>
       <ToastContainer />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             path="/*"
@@ -27,7 +27,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Suspense>
   );
 }

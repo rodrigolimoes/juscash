@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userFormDto } from "./UserFormDto";
 import { useUser } from "../../../hooks/useUser";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 
 const defaultValues = {
@@ -117,9 +117,9 @@ const UserForm: FC<UserFormProps> = () => {
       <div>
         <span className="float-right text-sm">
           Já possui conta?{" "}
-          <a href="/login" className="text-primary text-sm">
+          <Link to="/login" className="text-primary text-sm">
             Fazer o Login
-          </a>
+          </Link>
         </span>
       </div>
       <div className="flex justify-center m-t-12">

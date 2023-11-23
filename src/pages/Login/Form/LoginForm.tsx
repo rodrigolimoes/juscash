@@ -7,7 +7,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormDto } from "./LoginFormDto";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 
 const defaultValues = {
@@ -83,9 +83,9 @@ const LoginForm: FC<LoginFormProps> = () => {
       <div>
         <span className="float-right text-sm">
           Não possui uma conta?{" "}
-          <a href="/signup" className="text-primary text-sm">
+          <Link to="/signup" className="text-primary text-sm">
             Cadastrar
-          </a>
+          </Link>
         </span>
       </div>
       <div className="flex justify-center m-t-12">
