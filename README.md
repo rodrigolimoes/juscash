@@ -1,5 +1,4 @@
 # Teste FullStack - JusCash
-<hr/>
 
 O aplicativo está disponível online. Você pode acessá-lo [aqui](https://rodrigolimoes.github.io/juscash/).
 
