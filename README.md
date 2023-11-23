@@ -15,7 +15,7 @@ O aplicativo está disponível online. Você pode acessá-lo [aqui](https://rodr
   git clone <https://github.com/rodrigolimoes/juscash.git>
 
 # Acesse a pasta do projeto no terminal/cmd
-  cd teste-Juscash
+  cd juscash
 
 # Instale as dependências
   npm install
