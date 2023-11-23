@@ -6,7 +6,7 @@ import { Checkbox } from "../../../components/Checkbox";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { leadsFormDto } from "./LeadsFormDto";
-import { useLead } from "../../../hooks/useLeads";
+import { Lead } from "../../../hooks/useLeads";
 import { toast } from "react-toastify";
 
 interface Opportunity {
@@ -48,11 +48,17 @@ interface LeadsModalStateProps {
 }
 interface LeadsModalDispatchProps {
   onClose: () => void;
+  createLead: (data: Lead) => void;
 }
 
 type LeadsModalProps = LeadsModalStateProps & LeadsModalDispatchProps;
 
-const LeadsModal: FC<LeadsModalProps> = ({ data, isOpen, onClose }) => {
+const LeadsModal: FC<LeadsModalProps> = ({
+  data,
+  isOpen,
+  onClose,
+  createLead,
+}) => {
   const [opportunities, setOpportunities] =
     useState<Array<Opportunity>>(defaultOpportunities);
   const {
@@ -65,7 +71,6 @@ const LeadsModal: FC<LeadsModalProps> = ({ data, isOpen, onClose }) => {
     mode: "all",
     defaultValues,
   });
-  const { createLead } = useLead();
 
   const onChangeOpportunities = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;

@@ -16,7 +16,7 @@ const Home: FC<HomeProps> = () => {
           alt="JusCash Logo"
         />
       </header>
-      <main className="w-full p-16 h-screen flex justify-start items-start">
+      <main className="w-full p-16 h-screen flex flex-col justify-start items-start">
         <LeadsManagement />
       </main>
     </>

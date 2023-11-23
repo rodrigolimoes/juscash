@@ -8,7 +8,7 @@ export enum Status {
   LeadAnalysis = 30,
 }
 
-interface Lead {
+export interface Lead {
   id?: string;
   name: string;
   email: string;

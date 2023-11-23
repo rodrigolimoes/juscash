@@ -1,5 +1,5 @@
 import React, { FC, useRef, DragEvent } from "react";
-import { Status, useLead } from "../../../hooks/useLeads";
+import { Lead, Status } from "../../../hooks/useLeads";
 import { toast } from "react-toastify";
 import { checksNewStatus } from "../../../utils/checksNewStatus";
 
@@ -10,13 +10,16 @@ const positions = [
   Status.LeadAnalysis,
 ];
 
-interface LeadListStateProps {}
-interface LeadListDispatchProps {}
+interface LeadListStateProps {
+  leads: Array<Lead>;
+}
+interface LeadListDispatchProps {
+  updateStatus: (id: string, status: number) => void;
+}
 
 type LeadListProps = LeadListStateProps & LeadListDispatchProps;
 
-const LeadList: FC<LeadListProps> = () => {
-  const { leads, updateStatus } = useLead();
+const LeadList: FC<LeadListProps> = ({ leads, updateStatus }) => {
   const itemOver = useRef<string | null>(null);
 
   const onDragOver = (
