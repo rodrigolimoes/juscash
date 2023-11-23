@@ -3,7 +3,7 @@ import { Lead, Status } from "../../../hooks/useLeads";
 import { toast } from "react-toastify";
 import { checksNewStatus } from "../../../utils/checksNewStatus";
 
-const status = ["Dados confirmados", "Análise do lead", "Cliente em potencial"];
+const status = ["Cliente em potencial", "Dados confirmados", "Análise do lead"];
 const positions = [
   Status.PotentialClient,
   Status.ConfirmedData,
@@ -93,11 +93,15 @@ const LeadList: FC<LeadListProps> = ({ leads, updateStatus, onViewLead }) => {
           }
         >
           <div
-            className={"p-16"}
+            className={`p-16 ${status !== lead.status ? "" : "cursor-grab"}`}
             id={identifier}
             draggable
             onDragStart={(event) => {
-              onDragStart(event, { item: identifier, id: lead.id });
+              if (status !== lead.status) {
+                event.preventDefault();
+              } else {
+                onDragStart(event, { item: identifier, id: lead.id });
+              }
             }}
           >
             <span

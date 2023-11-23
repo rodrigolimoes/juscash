@@ -286,9 +286,11 @@ th {
     text-align: left;
     font-weight: 700;
 }
-td > div  {
+
+.cursor-grab {
     cursor: grab;
 }
+
 td > div > span {
     cursor: pointer;
     text-decoration: underline;
